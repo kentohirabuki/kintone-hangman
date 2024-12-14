@@ -1,0 +1,79 @@
+{
+  "name": "kintone-hangman",
+  "version": "0.1.0",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "init-plugin-js": "run-script-os",
+    "init-plugin-js:darwin": "mkdir plugin/js | touch plugin/js/config.js | touch plugin/js/desktop.js",
+    "init-plugin-js:linux": "mkdir -p plugin/js ; touch plugin/js/config.js ; touch plugin/js/desktop.js ;",
+    "init-plugin-js:win32": "mkdir plugin\\js | type nul > plugin\\js\\config.js | type nul > plugin\\js\\desktop.js",
+    "create-ppk": "kintone-plugin-packer --out dist/plugin-dev.zip plugin",
+    "move-ppk": "run-script-os",
+    "move-ppk:darwin": "mv dist/*.ppk private.ppk",
+    "move-ppk:linux": "mv dist/*.ppk private.ppk",
+    "move-ppk:win32": "move /Y dist\\*.ppk private.ppk",
+    "init-ppk": "run-s create-ppk move-ppk",
+    "init": "run-s init-plugin-js init-ppk",
+    "start": "node scripts/npm-start.js",
+    "upload": "node scripts/npm-upload.js",
+    "upload:dev": "node scripts/npm-upload.dev.js",
+    "upload:prod": "node scripts/npm-upload.prod.js",
+    "develop": "webpack --mode development --watch --config webpack.dev.js",
+    "build:dev": "webpack --mode development --config webpack.prod.js",
+    "build:prod": "webpack --mode production --config webpack.prod.js",
+    "lint": "eslint --rulesdir rules",
+    "jsdoc": "node_modules/jsdoc/jsdoc.js -c ./conf.json -t ./node_modules/clean-jsdoc-theme",
+    "lint-staged": "lint-staged",
+    "increment-version": "node scripts/increment_version"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint"
+    ]
+  },
+  "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@cybozu/eslint-config": "^23.0.0",
+    "@kintone/plugin-packer": "^8.1.2",
+    "@kintone/plugin-uploader": "^9.1.1",
+    "@kintone/rest-api-client": "^5.5.1",
+    "@kintone/webpack-plugin-kintone-plugin": "^8.0.8",
+    "@types/node": "^20.14.2",
+    "chokidar": "^3.6.0",
+    "css-loader": "^7.1.2",
+    "dotenv": "^16.4.5",
+    "env-cmd": "^10.1.0",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-jest": "^28.8.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-rulesdir": "^0.2.2",
+    "globals": "^15.9.0",
+    "husky": "^9.1.4",
+    "jsdoc": "^4.0.3",
+    "lint-staged": "^15.2.5",
+    "micromodal": "^0.4.10",
+    "npm-run": "^5.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.3.1",
+    "process": "^0.11.10",
+    "run-script-os": "^1.1.6",
+    "stylelint": "^16.8.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.0",
+    "toastr": "^2.1.4",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-merge": "^5.10.0"
+  }
+}

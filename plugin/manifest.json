@@ -1,0 +1,26 @@
+{
+  "manifest_version": 1,
+  "version": "0.1",
+  "type": "APP",
+  "desktop": {
+    "js": ["js/desktop.js"]
+  },
+  "icon": "image/icon.png",
+  "config": {
+    "html": "html/config.html",
+    "js": ["js/config.js"],
+    "css": ["css/51-modern-default.css"]
+  },
+  "name": {
+    "ja": "サンプルプラグイン",
+    "en": "sample plugin"
+  },
+  "description": {
+    "ja": "devCampのサンプルプラグインです。",
+    "en": "This is sample plugin for devCamp."
+  },
+  "homepage_url": {
+    "en": "https://create-new-air.notion.site/kintone-Plugin-Help-8f407f55099a446ebe58447ace6978a1?pvs=4",
+    "ja": "https://create-new-air.notion.site/kintone-c126da13d18748b695d3dc05e051c334?pvs=4"
+  }
+}

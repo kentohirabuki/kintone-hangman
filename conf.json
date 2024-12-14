@@ -1,0 +1,9 @@
+{
+  "source": {
+    "include": ["./src/common", "./src/common/general", "./src/common/api"],
+    "excludePattern": "(^|\\/)libraries\\/"
+  },
+  "opts": {
+    "destination": "./jsdoc/"
+  }
+}
